@@ -14,7 +14,6 @@ export const App = () => {
   const [btnShow, setBtnShow] = useState(false);
   const [largeImageUrl, setLargeImageUrl] = useState(null);
   const [isLoader, setIsLoader] = useState(false);
-  // eslint-disable-next-line no-unused-vars
 
   useEffect(() => {
     if (!query) {
