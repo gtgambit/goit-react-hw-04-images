@@ -17,8 +17,7 @@ export const App = () => {
   // eslint-disable-next-line no-unused-vars
 
   useEffect(() => {
-    if (query === '') {
-      alert('ввести бы что-то');
+    if (!query) {
       return;
     }
     const FetchPictures = async () => {
