@@ -20,21 +20,25 @@ export const App = () => {
       return;
     }
     const FetchPictures = async () => {
-      setIsLoader(true);
-      const data = await FetchPhotos(query, page);
-      setIsLoader(false);
-      if (!data.hits.length) {
-        alert('нема таких фото');
-        return;
+      try {
+        setIsLoader(true);
+        const data = await FetchPhotos(query, page);
+        setIsLoader(false);
+        if (!data.hits.length) {
+          alert('нема таких фото');
+          return;
+        }
+        if (page === Math.ceil(data.totalHits / 12)) {
+          setPhotos(data.hits);
+          setBtnShow(false);
+          alert('Фото скінчились');
+          return;
+        }
+        setPhotos(prevPhotos => [...prevPhotos, ...data.hits]);
+        setBtnShow(true);
+      } catch (error) {
+        alert(error.message);
       }
-      if (page === Math.ceil(data.totalHits / 12)) {
-        setPhotos(data.hits);
-        setBtnShow(false);
-        alert('Фото скінчились');
-        return;
-      }
-      setPhotos(prevPhotos => [...prevPhotos, ...data.hits]);
-      setBtnShow(true);
     };
     FetchPictures();
   }, [query, page]);
