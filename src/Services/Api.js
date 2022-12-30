@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const FetchPhotos = async (searchQuery, page) => {
+export const fetchPhotos = async (searchQuery, page) => {
   const { data } = await axios.get('https://pixabay.com/api/', {
     params: {
       q: searchQuery,

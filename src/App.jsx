@@ -4,7 +4,7 @@ import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import { Loader } from './components/Loader/Loader';
 import { Button } from './components/Button/Button';
 import { Modal } from './components/Modal/Modal';
-import { FetchPhotos } from 'Services/Api';
+import { fetchPhotos } from 'Services/Api';
 import css from './App.module.css';
 
 export const App = () => {
@@ -19,10 +19,10 @@ export const App = () => {
     if (!query) {
       return;
     }
-    const FetchPictures = async () => {
+    const fetchPictures = async () => {
       try {
         setIsLoader(true);
-        const data = await FetchPhotos(query, page);
+        const data = await fetchPhotos(query, page);
         setIsLoader(false);
         if (!data.hits.length) {
           alert('нема таких фото');
@@ -40,7 +40,7 @@ export const App = () => {
         alert(error.message);
       }
     };
-    FetchPictures();
+    fetchPictures();
   }, [query, page]);
 
   const onFormSubmit = query => {
