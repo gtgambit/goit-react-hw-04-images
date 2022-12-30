@@ -10,7 +10,6 @@ export const Modal = ({ onClickOpenModal, largeImageUrl }) => {
   };
   useEffect(() => {
     const onCloseModal = () => {
-      console.log('Hell');
       onClickOpenModal();
     };
 
